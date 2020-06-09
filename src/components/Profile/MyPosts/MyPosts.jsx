@@ -5,9 +5,9 @@ import Post from './Post/Post';
 const MyPosts = ()=>{
   return (
       <div>
-        <Post />
-        <Post />
-        <Post />
+        <Post message='Привет как дела?'/>
+        <Post message='Я застряла у тебя в паутине...' />
+        <Post message='Как вылезти?' />
       </div>
   );
 }

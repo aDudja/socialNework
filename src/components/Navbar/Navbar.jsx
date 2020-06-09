@@ -5,9 +5,11 @@ const Navbar = ()=>{
   return (
     <nav className={s.nav}>
       <ul>
-        <li>Друзья</li>
-        <li>Сообщения</li>
-        <li>Группы</li>
+        <li><a href='/profile'>Profile</a></li>
+        <li><a href='/dialogs'>Messages</a></li>
+        <li>News</li>
+        <li>Music</li>
+        <li>Settings</li>
       </ul>
     </nav>
   );

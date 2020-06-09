@@ -3,3 +3,8 @@
   background-color: rgb(24, 186, 197);
   min-height: 80vh;
 }
+
+.post img {
+  width: 42px;
+  border-radius: 50%;
+}
