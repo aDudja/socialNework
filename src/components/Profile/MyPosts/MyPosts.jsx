@@ -2,12 +2,13 @@ import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
 
-const MyPosts = ()=>{
+const MyPosts = (props)=>{
+
+const postsElement = props.posts.map(post=><Post message={post.message}/>);
+
   return (
       <div>
-        <Post message='Привет как дела?'/>
-        <Post message='Я застряла у тебя в паутине...' />
-        <Post message='Как вылезти?' />
+        {postsElement}
       </div>
   );
 }

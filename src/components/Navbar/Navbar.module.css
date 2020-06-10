@@ -3,6 +3,12 @@
   background-color: rgb(17, 163, 248);
 }
 
-li {
+li, a {
   list-style: none;
+  text-decoration: none;
+}
+
+.active {
+  color: white;
+  
 }

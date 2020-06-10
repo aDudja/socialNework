@@ -1,36 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import Header from './components/Header/Header';
-import Navbar from './components/Navbar/Navbar';
-import Profile from './components/Profile/Profile';
-import Dialogs from './components/Dialogs/Dialogs';
-import { BrowserRouter, Route } from 'react-router-dom';
-
+import App from './App';
 
 // ========================================
 
-
-
-const Game = () => {
-  return (
-    <BrowserRouter>
-      <div className='app-wrapper'>
-        <Header />
-        <Navbar />
-        <div className='content'>
-          <Route path='/profile' component={Profile}/>
-          <Route path='/dialogs' component={Dialogs}/>
-        </div>
-      </div>
-    </BrowserRouter>
-  )
-}
-
+const postsData = [
+  {id: 1, message: 'Привет как дела?'},
+  {id: 2, message: 'Я застряла у тебя в паутине...'},
+  {id: 3, message: 'Как вылезти?'},
+];
+const dialogsData = [
+  {id: 1, name: 'Anton'},
+  {id: 2, name: 'Alina'},
+  {id: 3, name: 'Svetlana'},
+];
+const messagesData = [
+  {id: 1, message: 'Hi'},
+  {id: 2, message: 'Hello'},
+  {id: 3, message: '???'},
+]
 
 // ========================================
 
 ReactDOM.render(
-  <Game />,
+  <App posts={postsData} dialogs={dialogsData} messages={messagesData} />,
   document.getElementById('root')
 );
