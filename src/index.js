@@ -1,28 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import store from './redux/state';
+import { BrowserRouter } from 'react-router-dom';
 
 // ========================================
 
-const postsData = [
-  {id: 1, message: 'Привет как дела?'},
-  {id: 2, message: 'Я застряла у тебя в паутине...'},
-  {id: 3, message: 'Как вылезти?'},
-];
-const dialogsData = [
-  {id: 1, name: 'Anton'},
-  {id: 2, name: 'Alina'},
-  {id: 3, name: 'Svetlana'},
-];
-const messagesData = [
-  {id: 1, message: 'Hi'},
-  {id: 2, message: 'Hello'},
-  {id: 3, message: '???'},
-]
 
-// ========================================
+let rerenderEntireTree = ()=>{
+    ReactDOM.render(
+        <BrowserRouter>
+            <App state = {store.getState()}
+                 dispatch = {store.dispatch.bind(store)} />
+        </BrowserRouter>
+        ,
+        document.getElementById('root')
+    );
+}
 
-ReactDOM.render(
-  <App posts={postsData} dialogs={dialogsData} messages={messagesData} />,
-  document.getElementById('root')
-);
+rerenderEntireTree(store.getState());
+
+store.subscribe(rerenderEntireTree);
