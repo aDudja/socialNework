@@ -1,3 +1,12 @@
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
+
+const ADD_POST = 'ADD_POST';
+const HANDLE_CHANGE_POST = 'HANDLE_CHANGE_POST';
+
+const SEND_MESSAGE = 'SEND_MESSAGE';
+const HANDLE_CHANGE_MESSAGE = 'HANDLE_CHANGE_MESSAGE';
+
 const store = {
   _state: {
     profilePage: {
@@ -17,7 +26,8 @@ const store = {
         { id: 1, message: 'Hi' },
         { id: 2, message: 'Hello' },
         { id: 3, message: '???' },
-      ]
+      ],
+      newMessageBody: '',
     },
   },
   _callSubscriber(){},
@@ -39,16 +49,34 @@ const store = {
   },
 
   dispatch(action){
-    if (action.type === 'ADD-POST') {
-      this._state.profilePage.posts.push({id: this._state.profilePage.posts.length+1, message: this._state.profilePage.newPost,});
-      this._callSubscriber();
-    } else if (action.type === 'HANDLE-CHANGE'){
-      this._state.profilePage.newPost = action.text;
-      this._callSubscriber();
-    }
-  }
-
-
+    this._state.profilePage=profileReducer(this._state.profilePage,action);
+    this._state.messagesPage=dialogsReducer(this._state.messagesPage,action);
+    this._callSubscriber();
+  //   if (action.type === 'ADD_POST') {
+  //     this._state.profilePage.posts.push({id: this._state.profilePage.posts.length+1, message: this._state.profilePage.newPost,})
+  //     this._state.profilePage.newPost='';
+  //     this._callSubscriber(this._state);
+  //   } else if (action.type === 'HANDLE_CHANGE_POST'){
+  //     this._state.profilePage.newPost = action.text;
+  //     this._callSubscriber(this._state);
+  //   } else if (action.type === SEND_MESSAGE) {
+  //     this._state.messagesPage.messages.push({id: this._state.messagesPage.messages.length+1, message: this._state.messagesPage.newMessageBody,})
+  //     this._state.messagesPage.newMessageBody='';
+  //     this._callSubscriber(this._state);
+  //   } else if (action.type === HANDLE_CHANGE_MESSAGE){
+  //     this._state.messagesPage.newMessageBody = action.message;
+  //     this._callSubscriber(this._state);
+  //   }
+   }
 }
+
+// export const addPostActionCreator = ()=>({type: ADD_POST});
+// export const handleChangePostActionCreator = (text)=>({
+//   type: HANDLE_CHANGE_POST,
+//   text: text
+// });
+//
+// export const sendMessageCreator = ()=>({type: SEND_MESSAGE});
+// export const handleChangeMessageCreator = (message)=>({type: HANDLE_CHANGE_MESSAGE, message: message});
 
 export default store;
