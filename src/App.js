@@ -5,7 +5,7 @@ import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import Dialogs from './components/Dialogs/Dialogs';
 import {Route } from 'react-router-dom';
-import store  from './redux/state';
+import store  from './redux/store';
 
 
 const App = (props) => {
@@ -23,7 +23,7 @@ const App = (props) => {
             />
 
           <Route path='/dialogs' render={
-              ()=> <Dialogs state={props.state.messagesPage}
+              ()=> <Dialogs state={props.state.dialogsPage}
                             dispatch = {props.dispatch}
               /> } />
         </div>
