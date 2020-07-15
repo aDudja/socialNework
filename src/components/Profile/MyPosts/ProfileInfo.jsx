@@ -1,13 +1,19 @@
 import React from 'react';
 import s from './ProfileInfo.module.css';
+import Preloader from "../../common/Preloader";
 
-const ProfileInfo = ()=>{
-  return (
-    <div className={s.profile}>
-      <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRZFET3IBGGG6MRW_ykFqpgYyAo2dJ65SvtxUQJjc-8pmZPYpeU&usqp=CAU' />
-      <div>Walter White 53y.o.</div>
-    </div>
-  );
+const ProfileInfo = (props) => {
+    if (!props.profile) {
+        return <Preloader/>
+    }
+    return (
+        <div className={s.profile}>
+            <img className={s.avatar} src={props.profile.photos.large}/>
+            <div>ID: {props.profile.userId}</div>
+            <div>Имя: {props.profile.fullName}</div>
+            <div>Обо мне: {props.profile.aboutMe}</div>
+        </div>
+    );
 }
 
 export default ProfileInfo;
