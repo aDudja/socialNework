@@ -1,5 +1,4 @@
 const SEND_MESSAGE = 'SEND_MESSAGE';
-const HANDLE_CHANGE_MESSAGE = 'HANDLE_CHANGE_MESSAGE';
 
 let initialState = {
     dialogs: [
@@ -10,31 +9,24 @@ let initialState = {
         { id: 1, message: 'Hi' },
         { id: 2, message: 'Hello' },
         { id: 3, message: '???' },
-    ],
-    newMessageBody: '',
+    ]
 };
 
 const dialogsReducer = (state = initialState, action)=>{
     switch (action.type) {
         case SEND_MESSAGE:
-            let body = state.newMessageBody;
+            let body = action.newMessageBody;
             return {
                 ...state,
-                newMessageBody: '',
                 messages: [...state.messages, {id: state.messages.length + 1, message: body,}]
             };
-        case HANDLE_CHANGE_MESSAGE:
-            return {
-                ...state,
-                newMessageBody: action.message,
-            };
+
         default:
             return state
     }
 }
 
-export const sendMessageCreator = ()=>({type: SEND_MESSAGE});
-export const handleChangeMessageCreator = (message)=>({type: HANDLE_CHANGE_MESSAGE, message: message});
+export const sendMessageCreator = (newMessageBody)=>({type: SEND_MESSAGE, newMessageBody});
 
 
 export default dialogsReducer;

@@ -1,0 +1,13 @@
+.photo {
+    height: 150px;
+    box-shadow: 1px 1px 14px 0px rgb(27 27 31);
+    margin: 3px;
+}
+
+.header {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px black;
+    color: white;
+}
