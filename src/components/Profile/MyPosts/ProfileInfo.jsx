@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './ProfileInfo.module.css';
 import Preloader from "../../common/Preloader";
-import ProfileStatus from "./ProfileStatus"
+import ProfileStatusWithUseState from "./ProfileStatusWithUseState";
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
@@ -13,7 +13,7 @@ const ProfileInfo = (props) => {
             <div>ID: {props.profile.userId}</div>
             <div>Имя: {props.profile.fullName}</div>
             <div>Обо мне: {props.profile.aboutMe}</div>
-            <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+            <ProfileStatusWithUseState status={props.status} updateStatus={props.updateStatus}/>
         </div>
     );
 }
