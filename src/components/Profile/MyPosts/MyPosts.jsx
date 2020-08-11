@@ -15,8 +15,10 @@ let addNewPostForm = (props)=>{
 
 let АddNewPostFormRedux = reduxForm({form: 'ProfileAddNewPostForm'})(addNewPostForm);
 
-const MyPosts = (props) => {
-    const postsElement = props.posts.map(post => <Post message={post.message} />);
+const MyPosts = React.memo((props) => {
+    const postsElement = [...props.posts]
+        .reverse()
+        .map(post => <Post message={post.message} />);
 
 
     let onAddPost = (values) => {
@@ -29,5 +31,5 @@ const MyPosts = (props) => {
             {postsElement}
         </>
     );
-}
+})
 export default MyPosts;
